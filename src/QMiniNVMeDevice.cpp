@@ -170,3 +170,28 @@ bool QMiniNVMeDevice::controllerReset()
     return lastError().success();
 }
 
+void QMiniNVMeDevice::setTimeout(int value)
+{
+    nvme_timeout_t timeout;
+    timeout.value = value;
+
+    int err = ioctl(fd(), NVME_IOCTL_SET_TIMOUT, &timeout);
+    if (err < 0)
+        setLastError(QMiniPCIError::DeviceIoctlError);
+    else
+        setLastError(QMiniPCIError::NoError);
+}
+
+int QMiniNVMeDevice::timeout()
+{
+    nvme_timeout_t timeout;
+
+    int err = ioctl(fd(), NVME_IOCTL_GET_TIMOUT, &timeout);
+    if (err < 0)
+        setLastError(QMiniPCIError::DeviceIoctlError);
+    else
+        setLastError(QMiniPCIError::NoError);
+
+    return timeout.value;
+}
+

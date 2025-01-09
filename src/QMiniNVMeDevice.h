@@ -33,6 +33,8 @@ public:
     bool read(quint64 offset, quint32 count, char *buffer, int length, int nsid = 1);
     bool write(quint64 offset, quint32 count, char *buffer, int length, int nsid = 1);
     bool controllerReset();
+    void setTimeout(int value);
+    int timeout();
 
 private:
     QMiniNVMeError m_error;
