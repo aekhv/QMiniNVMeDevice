@@ -5,8 +5,10 @@ This is a subclass of the MiniPCIDevice library designed to communicate with NVM
 
 ## Features
 - General device info (ID and namespaces);
-- read and write;
-- controller reset;
+- Read and Write;
+- Basic error handling;
+- Timeout control;
+- Controller reset;
 
 See MiniNVMeTestApp for more details.
 
