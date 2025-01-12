@@ -27,3 +27,13 @@ QMiniNVMeControllerInfo::QMiniNVMeControllerInfo(const nvme_controller_info_t &i
     m_tcap = info.tnvmcap_lo;
     m_ucap = info.unvmcap_lo;
 }
+
+QString QMiniNVMeControllerInfo::friendlyName() const
+{
+    QString s = QString("%1 %2 %3")
+            .arg(m_mdl)
+            .arg(m_fw)
+            .arg(m_sn);
+
+    return s.trimmed().isEmpty() ? "Unknown device" : s.trimmed();
+}

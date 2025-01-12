@@ -25,6 +25,7 @@ public:
     int maxDataTransferSize() const { return m_mdts; }
     qint64 totalCapacity() const { return m_tcap; }
     qint64 unallocatedCapacity() const { return m_ucap; }
+    QString friendlyName() const;
 
 private:
     QString m_mdl;
